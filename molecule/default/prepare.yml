@@ -1,0 +1,19 @@
+---
+# Add necessary requirements to the test environment
+- name: Prepare
+  hosts: all
+  # These roles need root access
+  become: true
+
+  vars:
+    pip_install_packages:
+    - name: docker
+
+  roles:
+    - geerlingguy.docker
+    - geerlingguy.pip
+
+  pre_tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
