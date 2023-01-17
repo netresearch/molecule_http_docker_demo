@@ -1,11 +1,16 @@
 ---
 dependency:
   name: galaxy
+
 driver:
   name: vagrant
+
 platforms:
   - name: instance
+    box: debian/bullseye64
+
 provisioner:
   name: ansible
+
 verifier:
   name: ansible
