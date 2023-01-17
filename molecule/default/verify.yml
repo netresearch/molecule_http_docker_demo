@@ -3,8 +3,36 @@
 
 - name: Verify
   hosts: all
+  become: true
   gather_facts: false
   tasks:
-  - name: Example assertion
+  - name: Register Docker container status
+    community.docker.docker_container_info:
+      name: nginx
+    register: container_info
+
+  - name: Nginx Docker container assertion
     ansible.builtin.assert:
-      that: true
+      that:
+        - "container_info.exists"
+        - "container_info.container.State.Status == 'running'"
+        - "container_info.container.State.Running"
+      success_msg: "container OK"
+      fail_msg: "container NOT OK"
+
+  - name: Make a simple HTTP request
+    ansible.builtin.uri:
+      url: http://localhost:80
+      return_content: true
+    register: result
+
+  - name: HTTP request assertion
+    ansible.builtin.assert:
+      that:
+        - "result.status == 200"
+      success_msg: "HTTP request OK"
+      fail_msg: "HTTP request NOT OK"
+
+  - name: Print HTTP response
+    ansible.builtin.debug:
+      msg: "{{ result.content }}"
