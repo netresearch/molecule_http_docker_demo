@@ -1,0 +1,11 @@
+---
+# defaults file for molecule_http_docker_demo
+
+nginx_image: nginx:latest
+nginx_service_name: nginx
+nginx_ports:
+  - "80:80"
+  - "443:443"
+nginx_mounts: []
+nginx_cli_commands: []
+nginx_labels:

@@ -1,0 +1,15 @@
+galaxy_info:
+  author: TheDevMinerTV
+  role_name: molecule_http_docker_demo
+  namespace: netresearch
+  description: demo Ansible role to show Molecule testing with Vagrant
+  company: Netresearch
+  license: MIT
+  min_ansible_version: "2.14"
+  platforms:
+    - name: Debian
+      versions:
+        - bullseye
+
+  galaxy_tags: []
+dependencies: []
