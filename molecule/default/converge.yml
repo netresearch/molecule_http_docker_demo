@@ -1,6 +1,8 @@
 ---
 - name: Converge
   hosts: all
+  # Docker access needs root permissions
+  become: true
   tasks:
     - name: "Include molecule_http_docker_demo"
       ansible.builtin.include_role:

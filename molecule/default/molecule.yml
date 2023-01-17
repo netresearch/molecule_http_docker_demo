@@ -12,6 +12,9 @@ platforms:
 
 provisioner:
   name: ansible
+  options:
+    # Enable `--diff` mode
+    D: true
 
 verifier:
   name: ansible
