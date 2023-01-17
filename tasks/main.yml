@@ -6,7 +6,7 @@
     source: pull
     force_source: true
 
-- name: Start start nginx service via Docker
+- name: Start start nginx service via Docker  # noqa args[module]
   community.general.docker_container:
     name: "{{ nginx_service_name }}"
     image: "{{ nginx_image }}"
