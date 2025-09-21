@@ -2,7 +2,7 @@
 # Our role needs Docker and pip to be installed
 roles:
   - src: geerlingguy.docker
-    version: 7.5.4
+    version: 7.5.5
 
   - src: geerlingguy.pip
     version: 3.1.0
